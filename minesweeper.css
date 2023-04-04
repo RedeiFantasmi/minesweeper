@@ -1,0 +1,137 @@
+:root {
+    --nbColumns: 10;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+main {
+    width: 100%;
+    max-width: 680px;
+}
+
+dialog {
+    margin: auto;
+    border: none;
+    background-color: transparent;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+dialog div {
+    width: 300px;
+    height: 250px;
+    border-radius: 8px;
+    display: flex;
+    background-color: #FFFFFFDD;
+    padding: 8px;
+    margin-bottom: 16px;
+}
+dialog div span {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog button {
+    border: none;
+    background-color: #81a038;
+    border-radius: 8px;
+    width: 300px;
+    color: #FFFFFF;
+    padding: 16px 24px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: ; */
+}
+dialog button img {
+    height: 24px;
+    margin-right: 12px;
+}
+
+dialog button:focus {
+    border: none;
+    outline: none;
+}
+
+.toolbar {
+    background-color: #81a038;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.toolbar select {
+    border-radius: 4px;
+}
+
+.toolbar .mine-counter {
+    position: relative;
+}
+.toolbar .mine-counter::before {
+    content: '⚑';
+    color: red;
+}
+
+.toolbar .time-counter {
+    position: relative;   
+}
+.toolbar .time-counter::before {
+    content: '🕒';
+}
+
+
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--nbColumns), 1fr);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.grid div {
+    aspect-ratio: 1 / 1;
+    transition: background-color 0.1s, filter 0.25s;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 125%;
+    font-size: calc( 20em / var(--nbColumns) );
+    background-color: #AAD751;
+    font-weight: 800;
+}
+.grid div.alternate {
+    background-color: #A2D149;
+}
+.grid div.open {
+    cursor: default;
+    background-color: #E5C29f;
+}
+.grid div.open.alternate {
+    background-color: #D7B899;
+}
+
+.grid > div:not(.open):hover {
+    filter: brightness(1.2);
+}
