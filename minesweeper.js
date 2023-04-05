@@ -160,6 +160,7 @@
                             mines--;
                         } else {
                             target.element.textContent = '';
+                            target.element.style.color = '';
                             mines++;
                         }
     
