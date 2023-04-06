@@ -82,6 +82,7 @@ dialog button:focus {
 
 .toolbar select {
     border-radius: 4px;
+    color: #000000;
 }
 
 .toolbar .mine-counter {
@@ -93,7 +94,8 @@ dialog button:focus {
 }
 
 .toolbar .time-counter {
-    position: relative;   
+    position: relative;  
+    cursor: pointer; 
 }
 .toolbar .time-counter::before {
     content: '🕒';
