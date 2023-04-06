@@ -68,6 +68,7 @@
     timeElapsed.classList.add('time-counter');
     toolBar.appendChild(timeElapsed);
     timeElapsed.onclick = () => {
+        console.log('arg');
         gameController.reset();
     }
 
@@ -235,7 +236,6 @@
 
             changeDif(key) {
                 currentConfig = gridConfigs[key];
-                // ({ width, height, mines } = gridConfigs[key]);
                 this.reset();
             },
 
