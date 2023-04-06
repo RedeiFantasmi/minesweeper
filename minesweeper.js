@@ -26,7 +26,7 @@
         }
     }
 
-    const defaultConfig = 'EASY';
+    let currentConfig = gridConfigs.EASY;
 
     const colors = {
         1 : '#1976d2',
@@ -52,7 +52,7 @@
         const option = document.createElement('option');
         option.value = key;
         option.textContent = value.name;
-        option.selected = key == defaultConfig;
+        option.selected = key == currentConfig.name.toUpperCase();
         difChanger.appendChild(option);
     }
     toolBar.appendChild(difChanger);
@@ -67,6 +67,10 @@
     timeElapsed.textContent = 0;
     timeElapsed.classList.add('time-counter');
     toolBar.appendChild(timeElapsed);
+    timeElapsed.onclick = () => {
+        console.log('arg');
+        gameController.reset();
+    }
 
     container.appendChild(toolBar);
 
@@ -78,7 +82,7 @@
 
 
     function minesweeper() {
-        let { width, height, mines } = gridConfigs[defaultConfig];
+        let { width, height, mines } = currentConfig;
         let time = 0;
         let timer;
         let grid = [];
@@ -231,7 +235,8 @@
             },
 
             changeDif(key) {
-                ({ width, height, mines } = gridConfigs[key]);
+                currentConfig = gridConfigs[key];
+                // ({ width, height, mines } = gridConfigs[key]);
                 this.reset();
             },
 
@@ -263,6 +268,7 @@
             },
 
             reset() {
+                ({ width, height, mines } = currentConfig);
                 container.querySelector('.grid').remove();
                 grid = [];
                 gameRunning = true;
